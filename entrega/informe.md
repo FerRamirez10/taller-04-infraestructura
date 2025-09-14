@@ -55,16 +55,12 @@ El modelo refleja con fidelidad el estado actual de Tekton, evidenciando que la 
 Automatización de Backoffice e integración API-first en organizaciones B2B.
 
 ### Resumen:
-En el ecosistema C4, la Deployment view sirve para ilustrar cómo instancias de software (sistemas o contenedores del C2) se mapean a nodos de infraestructura dentro de un ambiente específico (producción, staging, etc.). Esta vista hereda conceptos de UML Deployment y pone el foco en qué se despliega dónde y cómo se conectan esos elementos; no en componentes internos ni código. Esto la hace ideal para complementar nuestros C1/C2 con un mapa lógico/físico realista del AS-IS. 
-C4 model
+Para ubicar nuestro trabajo de infraestructura dentro de marcos reconocidos, contrastamos TOGAF con C4. TOGAF es un framework de arquitectura empresarial que provee un método (ADM) y artefactos para diseñar y gobernar la arquitectura a nivel de negocio, datos, aplicaciones y tecnología; es decir, orienta el “proceso y gobierno” de la arquitectura, no la notación detallada de diagramas de software [1]. En Tekton, esto implica que la planificación de capacidades (p. ej., centralizar documentos, estandarizar facturación) podría enmarcarse en TOGAF, mientras que la representación concreta que usamos (C1/C2 y el mapa lógico/físico de despliegue) responde a una notación de software como C4 y a un Deployment/UML para infraestructura. Así, TOGAF nos da el por qué y el qué a nivel empresa; C4/UML nos dan el cómo se ve la solución en términos de sistemas, contenedores y nodos de despliegue.
 
-Para profundizar la capa tecnológica, ArchiMate 3.1 aporta un vocabulario formal de infraestructura: Node (recurso de TI que hospeda artefactos), Device (recurso físico), System software (entorno de ejecución) y Artifact (unidad desplegable). Estos elementos permiten describir con precisión dónde residen aplicaciones y datos, y qué relaciones existen entre los recursos (p. ej., caminos de comunicación). Usar esta semántica enriquece la lectura del mapa y facilita el diagnóstico de riesgos de infraestructura y dependencias. 
-www.opengroup.org
-
-Aplicado a Tekton, nuestro diagrama modela el pool de laptops como un Node que ejecuta los Artifacts “Backoffice Tekton” y “Planillas”; el MTA/Email como Node externo que actúa como datastore de facto; y los SaaS (ERP Sigo, banco, portales) como nodos externos conectados vía HTTPS/SMTP/IMAP. Separar los boundaries (oficina vs. servicios externos) y explicitar medios/protocolos sigue las guías de la Deployment view de C4 y permite razonar sobre disponibilidad, trazabilidad y puntos únicos de falla en el estado actual.
-
+En seguridad, aplicamos STRIDE como lista de verificación para el diagnóstico del diagrama de infraestructura. STRIDE clasifica amenazas en seis categorías: spoofing, tampering, repudiation, information disclosure, denial of service y elevation of privilege [2]. Con Tekton, esto guía preguntas accionables sobre el AS-IS: ¿hay riesgo de spoofing en accesos a SaaS sin MFA? (authenticity), ¿puede haber tampering de planillas locales o adjuntos de correo? (integrity), ¿existe trazabilidad para evitar repudiation en conciliaciones manuales? (non-repudiation), ¿hay information disclosure por documentos sensibles en buzones? (confidentiality), ¿un corte del MTA o del banco genera DoS operativo? (availability), y ¿puede un endpoint comprometido lograr elevation of privilege sobre cuentas SaaS? (authorization). Este enfoque conecta directamente el mapa de nodos y enlaces con controles de seguridad priorizables.
 ## 📚 Referencias
-- 
+- [1] The Open Group, “The TOGAF® Standard – Introduction.” Available: https://www.togaf.org/chap01.html
+- [2] Microsoft, “STRIDE model (Threats in the Threat Modeling Tool),” Microsoft Learn, Aug. 25, 2022. Available: https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats
 
 ---
 
