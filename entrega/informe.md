@@ -39,7 +39,15 @@ El modelo refleja con fidelidad el estado actual de Tekton, evidenciando que la 
 - Se asumió que el **pool de laptops** representa a todos los empleados y que en ellos conviven tanto funciones administrativas como operativas.  
 - Se modeló el **correo electrónico** como un nodo SaaS independiente con datastore, dado que allí se concentra la mayoría de los documentos críticos.  
 - Se consideró que los **servicios externos (ERP Sigo, bancos, portales)** se consumen exclusivamente vía portales web, sin integración API nativa.  
-- No se incluyeron otros elementos de red (firewall, switches) por no tener evidencia en los insumos, manteniendo el modelo en un nivel lógico simplificado.  
+- No se incluyeron otros elementos de red (firewall, switches) por no tener evidencia en los insumos, manteniendo el modelo en un nivel lógico simplificado.
+
+### Debilidades y cuellos de botella identificados
+- **Dependencia de laptops personales:** los portátiles de los empleados son el único medio de cómputo, sin servidores ni infraestructura centralizada, lo que representa un punto único de falla y baja resiliencia.  
+- **Correo electrónico como repositorio de facto:** los buzones y adjuntos son el almacén principal de documentos críticos (RUT, contratos, facturas), dificultando la trazabilidad y aumentando el riesgo de pérdida o duplicación.  
+- **Conciliación y facturación manuales:** la interacción con el banco y el ERP Sigo se realiza manualmente vía portales web, generando cuellos de botella y errores humanos.  
+- **Falta de integración entre SaaS externos:** clientes, aliados, ERP y banco no están conectados entre sí, lo que obliga a reprocesos y duplicidad de datos.  
+- **Ausencia de redundancia y respaldos:** no existen mecanismos de backup centralizados para documentos ni políticas de recuperación ante fallos en los servicios externos o dispositivos de empleados.
+
 
 
 ## 📈 Diagrama final entregado
