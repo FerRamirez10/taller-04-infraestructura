@@ -52,7 +52,7 @@ El modelo refleja con fidelidad el estado actual de Tekton, evidenciando que la 
 
 ## 🔍 Investigación complementaria
 ### Tema investigado:
-Automatización de Backoffice e integración API-first en organizaciones B2B.
+Comparación TOGAF vs C4 y aplicación de STRIDE para diagnóstico de infraestructura.
 
 ### Resumen:
 Para ubicar nuestro trabajo de infraestructura dentro de marcos reconocidos, contrastamos TOGAF con C4. TOGAF es un framework de arquitectura empresarial que provee un método (ADM) y artefactos para diseñar y gobernar la arquitectura a nivel de negocio, datos, aplicaciones y tecnología; es decir, orienta el “proceso y gobierno” de la arquitectura, no la notación detallada de diagramas de software [1]. En Tekton, esto implica que la planificación de capacidades (p. ej., centralizar documentos, estandarizar facturación) podría enmarcarse en TOGAF, mientras que la representación concreta que usamos (C1/C2 y el mapa lógico/físico de despliegue) responde a una notación de software como C4 y a un Deployment/UML para infraestructura. Así, TOGAF nos da el por qué y el qué a nivel empresa; C4/UML nos dan el cómo se ve la solución en términos de sistemas, contenedores y nodos de despliegue.
